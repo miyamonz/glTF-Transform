@@ -71,6 +71,7 @@ interface GlobalOptions {
 	resize?: vec2;
 	powerOfTwo?: boolean;
 	jobs?: number;
+	textureName?: string;
 }
 
 export interface ETC1SOptions extends GlobalOptions {
@@ -171,6 +172,11 @@ export const toktx = function (options: ETC1SOptions | UASTCOptions): Transform 
 				) {
 					logger.debug(`${prefix}: Skipping, excluded by pattern "${options.slots}".`);
 					return;
+				}
+				if (options.textureName) {
+					if (!micromatch.isMatch(texture.getName(), options.textureName, MICROMATCH_OPTIONS)) {
+						return;
+					}
 				}
 
 				const image = texture.getImage();
