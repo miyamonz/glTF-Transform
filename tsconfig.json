@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "./packages",
+    "baseUrl": "./",
     "paths": {
       "@gltf-transform/core": ["./packages/core/"],
       "@gltf-transform/extensions": ["./packages/extensions/"],
